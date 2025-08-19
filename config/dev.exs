@@ -23,11 +23,8 @@ config :crud_books, CrudBooksWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "wLOKWnCVYmKAon8wlBveomgo9yS/aNU+U7t3ppBCsWLpHvajcFCcjq8dlAhpILec",
-  watchers: [
-    esbuild: {Esbuild, :install_and_run, [:crud_books, ~w(--sourcemap=inline --watch)]},
-    tailwind: {Tailwind, :install_and_run, [:crud_books, ~w(--watch)]}
-  ]
+  secret_key_base: "7VJhPnK2jSza/zwsfQXdH7iEg3fb+ra9YN8gUi0oh6QnwOI76AFrcwyipUgNM+fy",
+  watchers: []
 
 # ## SSL Support
 #
@@ -52,16 +49,6 @@ config :crud_books, CrudBooksWeb.Endpoint,
 # configured to run both http and https servers on
 # different ports.
 
-# Watch static and templates for browser reloading.
-config :crud_books, CrudBooksWeb.Endpoint,
-  live_reload: [
-    patterns: [
-      ~r"priv/static/(?!uploads/).*(js|css|png|jpeg|jpg|gif|svg)$",
-      ~r"priv/gettext/.*(po)$",
-      ~r"lib/crud_books_web/(controllers|live|components)/.*(ex|heex)$"
-    ]
-  ]
-
 # Enable dev routes for dashboard and mailbox
 config :crud_books, dev_routes: true
 
@@ -74,12 +61,6 @@ config :phoenix, :stacktrace_depth, 20
 
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
-
-config :phoenix_live_view,
-  # Include HEEx debug annotations as HTML comments in rendered markup
-  debug_heex_annotations: true,
-  # Enable helpful, but potentially expensive runtime checks
-  enable_expensive_runtime_checks: true
 
 # Disable swoosh api client as it is only required for production adapters.
 config :swoosh, :api_client, false

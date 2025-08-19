@@ -17,7 +17,7 @@ config :crud_books, CrudBooks.Repo,
 # you can enable the server option below.
 config :crud_books, CrudBooksWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "Rv4a7lebfKXoZDReDEZfje78+ZkdyXiMypeUsM+cKB1JZQi/GfDf88WYkOlyC/Wo",
+  secret_key_base: "VKlbyPhrHo+ZUWQk2D8Mp2kKJUcFIZzECyjxupSHh3VfEHav8N3fO64tEKcivnJE",
   server: false
 
 # In test we don't send emails
@@ -31,7 +31,3 @@ config :logger, level: :warning
 
 # Initialize plugs at runtime for faster test compilation
 config :phoenix, :plug_init_mode, :runtime
-
-# Enable helpful, but potentially expensive runtime checks
-config :phoenix_live_view,
-  enable_expensive_runtime_checks: true

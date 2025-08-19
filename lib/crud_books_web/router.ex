@@ -1,27 +1,13 @@
 defmodule CrudBooksWeb.Router do
   use CrudBooksWeb, :router
 
-  pipeline :browser do
-    plug :accepts, ["html"]
-    plug :fetch_session
-    plug :put_root_layout, html: {CrudBooksWeb.Layouts, :root}
-    plug :put_secure_browser_headers
-  end
-
   pipeline :api do
     plug :accepts, ["json"]
   end
 
-  scope "/", CrudBooksWeb do
-    pipe_through :browser
-
-    get "/", PageController, :home
+  scope "/api", CrudBooksWeb do
+    pipe_through :api
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", CrudBooksWeb do
-  #   pipe_through :api
-  # end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:crud_books, :dev_routes) do
@@ -32,7 +18,8 @@ defmodule CrudBooksWeb.Router do
     # as long as you are also using SSL (which you should anyway).
 
     scope "/dev" do
-      pipe_through :browser
+      pipe_through [:fetch_session, :protect_from_forgery]
+
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
   end
